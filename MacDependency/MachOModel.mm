@@ -171,6 +171,12 @@
 	return NO;
 }
 
+/*! YES when the Mach-O has no representation on disk, i.e. it was served out of
+    the dyld shared cache and is only kept in memory. */
+- (BOOL) isInMemory {
+	return file != nullptr && file->isInMemory();
+}
+
 - (NSColor*) textColor {
 	NSColor* color;
 	switch(state) {
@@ -181,7 +187,9 @@
 			color = [NSColor systemRedColor];
 			break;
 		default:
-			color = [NSColor labelColor];
+			// Libraries that live only in the dyld shared cache get their own
+			// color, so it is obvious that there is no file to inspect on disk.
+			color = [self isInMemory] ? [NSColor systemPurpleColor] : [NSColor labelColor];
 	}
 	return color;
 }

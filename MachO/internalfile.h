@@ -33,6 +33,14 @@ public:
   virtual long long int getPosition() = 0;
   virtual time_t getLastModificationTime() const = 0;
 
+  /**
+   * True when the bytes are not backed by a file on disk. This is the case for
+   * libraries that only exist inside the dyld shared cache: their image is
+   * rebuilt in memory by DyldCacheImage. The UI marks those entries specially,
+   * because there is nothing on disk to inspect or reveal in the Finder.
+   */
+  virtual bool isInMemory() const = 0;
+
 protected:
   explicit InternalFile(const std::string& filename);
 

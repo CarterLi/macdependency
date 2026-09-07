@@ -29,6 +29,9 @@ public:
   const std::string& getExecutablePath() const { return executablePath; }
   time_t getLastModificationTime() const;
 
+  /** True when the underlying bytes come from the dyld shared cache, not disk. */
+  bool isInMemory() const;
+
 private:
   static unsigned int convertByteOrder(char* data, bool isBigEndian, unsigned int numberOfBytes);
   static unsigned int reverseByteOrder(unsigned int data);

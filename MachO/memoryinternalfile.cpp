@@ -39,3 +39,7 @@ long long int MemoryInternalFile::getPosition() {
 time_t MemoryInternalFile::getLastModificationTime() const {
   return 0;
 }
+
+bool MemoryInternalFile::isInMemory() const {
+  return true;
+}

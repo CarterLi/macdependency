@@ -149,6 +149,12 @@ time_t MachO::getLastModificationTime() const {
     return file->getLastModificationTime();
 }
 
+// True when this Mach-O has no file on disk, i.e. it was served out of the dyld
+// shared cache.
+bool MachO::isInMemory() const {
+    return file != 0 && file->isInMemory();
+}
+
 // return bundle version if available, otherwise NULL string
 std::string MachO::getVersion() const {
     std::string version;

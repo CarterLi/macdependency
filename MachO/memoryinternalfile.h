@@ -22,6 +22,9 @@ public:
   virtual long long int getPosition();
   virtual time_t getLastModificationTime() const;
 
+  /** Always true: a cached library has no file on disk. */
+  virtual bool isInMemory() const;
+
 private:
   std::vector<char> data;
   long long int position;

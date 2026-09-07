@@ -27,6 +27,7 @@ public:
   time_t getLastModificationTime() const;
   std::string getVersion() const;
   std::string getName() const;
+  bool isInMemory() const;
   const MachO* getParent() { return parent;}
   static DynamicLoader* dynamicLoader;
   static int referenceCounter;

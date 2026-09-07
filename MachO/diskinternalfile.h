@@ -18,6 +18,9 @@ public:
   virtual long long int getPosition();
   virtual time_t getLastModificationTime() const;
 
+  /** Always false: the bytes come from a real file on disk. */
+  virtual bool isInMemory() const;
+
 private:
   std::ifstream file;
   unsigned long long fileSize;

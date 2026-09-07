@@ -36,6 +36,7 @@ enum State {
 
 - (NSArray*) children;
 - (BOOL) isLeaf;
+- (BOOL) isInMemory;
 - (NSColor*) textColor;
 - (NSString*) name;
 - (NSNumber*) currentVersion;

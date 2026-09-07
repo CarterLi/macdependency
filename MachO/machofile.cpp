@@ -34,6 +34,7 @@ std::string MachOFile::getDirectory() const {
 std::string MachOFile::getTitle() const { return file->getTitle(); }
 unsigned long long MachOFile::getSize() const { return file->getSize(); }
 time_t MachOFile::getLastModificationTime() const { return file->getLastModificationTime(); }
+bool MachOFile::isInMemory() const { return file->isInMemory(); }
 
 uint32_t MachOFile::readUint32() {
   unsigned int temp;

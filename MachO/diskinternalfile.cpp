@@ -54,3 +54,7 @@ long long int DiskInternalFile::getPosition() {
 time_t DiskInternalFile::getLastModificationTime() const {
   return lastWriteTime;
 }
+
+bool DiskInternalFile::isInMemory() const {
+  return false;
+}
