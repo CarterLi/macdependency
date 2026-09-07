@@ -1,7 +1,11 @@
 #include "internalfile.h"
+#include "diskinternalfile.h"
+#include "memoryinternalfile.h"
+#include "dyldcacheimage.h"
 #include "machoexception.h"
 
-#include <dlfcn.h>
+#include <climits>
+#include <cstdlib>
 
 // use reference counting to reuse files for all used architectures
 InternalFile* InternalFile::create(InternalFile* file) {
@@ -10,7 +14,17 @@ InternalFile* InternalFile::create(InternalFile* file) {
 }
 
 InternalFile* InternalFile::create(const std::string& filename) {
-  return new InternalFile(filename);
+  try {
+    return new DiskInternalFile(filename);
+  } catch (MachOException&) {
+    // no readable file on disk -- maybe the library only exists inside the
+    // dyld shared cache
+  }
+
+  // Throws a MachOException when the library cannot be mapped either.
+  DyldCacheImage image;
+  image.load(filename);
+  return new MemoryInternalFile(filename, image.getData(), image.getSize());
 }
 
 void InternalFile::release() {
@@ -21,30 +35,12 @@ void InternalFile::release() {
 }
 
 InternalFile::InternalFile(const std::string& filename) :
-filename(filename), counter(1)
+counter(1), filename(filename)
 {
-  // open file handle
-  file.open(this->filename, std::ios_base::in | std::ios_base::binary);
-  if (file.fail()) {
-    void* dylib = dlopen(this->filename.c_str(), RTLD_LAZY);
-    if (dylib) {
-      dlclose(dylib);
-      throw MachOException("System cached library '" + filename + "'.", true);
-    } else {
-      throw MachOException("Couldn't open file '" + filename + "'.");
-    }
-  }
-  
-  struct stat buffer;
-  if (stat(filename.c_str(), &buffer) >= 0) {
-    _fileSize = buffer.st_size;
-    _lastWriteTime = buffer.st_mtime;
-  }
 }
 
-// destructor is private since we use reference counting mechanism
-InternalFile::~InternalFile()  {
-  file.close();
+InternalFile::~InternalFile()
+{
 }
 
 /* returns whole filename (including path)*/
@@ -60,35 +56,4 @@ std::string InternalFile::getName() const {
 /* returns filename without path */
 std::string InternalFile::getTitle() const {
   return filename;
-}
-
-unsigned long long InternalFile::getSize() const {
-  return _fileSize;
-}
-
-bool InternalFile::seek(long long int position) {
-  file.seekg(position, std::ios_base::beg);
-  if (file.fail()) {
-    file.clear();
-    return false;
-  }
-  return true;
-}
-
-std::streamsize InternalFile::read(char* buffer, std::streamsize size) {
-  file.read(buffer, size);
-  if (file.fail()) {
-    file.clear();
-    return file.gcount();
-  }
-  // TODO: handle badbit
-  return size;
-}
-
-long long int InternalFile::getPosition() {
-  return file.tellg();
-}
-
-time_t InternalFile::getLastModificationTime() const {
-  return _lastWriteTime;
 }

@@ -52,6 +52,12 @@
 		8EA3E17B11B12B5A0093CD87 /* dylinkercommand.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EA3E17911B12B5A0093CD87 /* dylinkercommand.h */; };
 		8ED32FDE100B99EC00EBF623 /* machocache.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ED32FDC100B99EC00EBF623 /* machocache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8ED32FDF100B99EC00EBF623 /* machocache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8ED32FDD100B99EC00EBF623 /* machocache.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A1C0DE0F1A2B3C4D5E0000A2 /* dyldcacheimage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1C0DE0F1A2B3C4D5E0000A1 /* dyldcacheimage.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A1C0DE0F1A2B3C4D5E0000A4 /* dyldcacheimage.h in Headers */ = {isa = PBXBuildFile; fileRef = A1C0DE0F1A2B3C4D5E0000A3 /* dyldcacheimage.h */; };
+		A1C0DE0F1A2B3C4D5E0000B2 /* diskinternalfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1C0DE0F1A2B3C4D5E0000B1 /* diskinternalfile.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A1C0DE0F1A2B3C4D5E0000B4 /* diskinternalfile.h in Headers */ = {isa = PBXBuildFile; fileRef = A1C0DE0F1A2B3C4D5E0000B3 /* diskinternalfile.h */; };
+		A1C0DE0F1A2B3C4D5E0000C2 /* memoryinternalfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1C0DE0F1A2B3C4D5E0000C1 /* memoryinternalfile.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A1C0DE0F1A2B3C4D5E0000C4 /* memoryinternalfile.h in Headers */ = {isa = PBXBuildFile; fileRef = A1C0DE0F1A2B3C4D5E0000C3 /* memoryinternalfile.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +112,12 @@
 		8EA3E17911B12B5A0093CD87 /* dylinkercommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dylinkercommand.h; sourceTree = "<group>"; wrapsLines = 0; };
 		8ED32FDC100B99EC00EBF623 /* machocache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = machocache.h; sourceTree = "<group>"; wrapsLines = 0; };
 		8ED32FDD100B99EC00EBF623 /* machocache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = machocache.cpp; sourceTree = "<group>"; wrapsLines = 0; };
+		A1C0DE0F1A2B3C4D5E0000A1 /* dyldcacheimage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dyldcacheimage.cpp; sourceTree = "<group>"; wrapsLines = 0; };
+		A1C0DE0F1A2B3C4D5E0000A3 /* dyldcacheimage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dyldcacheimage.h; sourceTree = "<group>"; wrapsLines = 0; };
+		A1C0DE0F1A2B3C4D5E0000B1 /* diskinternalfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = diskinternalfile.cpp; sourceTree = "<group>"; wrapsLines = 0; };
+		A1C0DE0F1A2B3C4D5E0000B3 /* diskinternalfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = diskinternalfile.h; sourceTree = "<group>"; wrapsLines = 0; };
+		A1C0DE0F1A2B3C4D5E0000C1 /* memoryinternalfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = memoryinternalfile.cpp; sourceTree = "<group>"; wrapsLines = 0; };
+		A1C0DE0F1A2B3C4D5E0000C3 /* memoryinternalfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memoryinternalfile.h; sourceTree = "<group>"; wrapsLines = 0; };
 		ADCDF193276D87BF002476ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -206,6 +218,12 @@
 				8E131570100F7DB600367510 /* symboltableentry64.h */,
 				8ED32FDC100B99EC00EBF623 /* machocache.h */,
 				8ED32FDD100B99EC00EBF623 /* machocache.cpp */,
+				A1C0DE0F1A2B3C4D5E0000A1 /* dyldcacheimage.cpp */,
+				A1C0DE0F1A2B3C4D5E0000A3 /* dyldcacheimage.h */,
+				A1C0DE0F1A2B3C4D5E0000B1 /* diskinternalfile.cpp */,
+				A1C0DE0F1A2B3C4D5E0000B3 /* diskinternalfile.h */,
+				A1C0DE0F1A2B3C4D5E0000C1 /* memoryinternalfile.cpp */,
+				A1C0DE0F1A2B3C4D5E0000C3 /* memoryinternalfile.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -267,6 +285,9 @@
 				8E212E93101237A50078924A /* machodemangleexception.h in Headers */,
 				8EA3DFF511AFD3790093CD87 /* uuidcommand.h in Headers */,
 				8EA3E17B11B12B5A0093CD87 /* dylinkercommand.h in Headers */,
+				A1C0DE0F1A2B3C4D5E0000A4 /* dyldcacheimage.h in Headers */,
+				A1C0DE0F1A2B3C4D5E0000B4 /* diskinternalfile.h in Headers */,
+				A1C0DE0F1A2B3C4D5E0000C4 /* memoryinternalfile.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +376,9 @@
 				8E212E94101237A50078924A /* machodemangleexception.cpp in Sources */,
 				8EA3DFF411AFD3790093CD87 /* uuidcommand.cpp in Sources */,
 				8EA3E17A11B12B5A0093CD87 /* dylinkercommand.cpp in Sources */,
+				A1C0DE0F1A2B3C4D5E0000A2 /* dyldcacheimage.cpp in Sources */,
+				A1C0DE0F1A2B3C4D5E0000B2 /* diskinternalfile.cpp in Sources */,
+				A1C0DE0F1A2B3C4D5E0000C2 /* memoryinternalfile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
