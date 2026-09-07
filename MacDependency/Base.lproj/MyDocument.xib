@@ -45,24 +45,13 @@
                                             <rect key="frame" x="1" y="1" width="768" height="672"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" headerView="100091" indentationPerLevel="14" autoresizesOutlineColumn="YES" outlineTableColumn="bfD-30-twJ" id="100036" customClass="AutoExpandOutlineView">
+                                                <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" headerView="100091" indentationPerLevel="14" autoresizesOutlineColumn="YES" outlineTableColumn="100038" id="100036" customClass="AutoExpandOutlineView">
                                                     <rect key="frame" x="0.0" y="0.0" width="768" height="649"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="3" height="0.0"/>
                                                     <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn editable="NO" width="10" minWidth="14" maxWidth="10" id="bfD-30-twJ">
-                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </tableHeaderCell>
-                                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" enabled="NO" allowsUndo="NO" alignment="left" title="Text Cell" id="Bwe-Ql-gYb">
-                                                                <font key="font" metaFont="system"/>
-                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                        </tableColumn>
                                                         <tableColumn editable="NO" width="240" minWidth="16" maxWidth="1000" id="100038">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Name (Install Name)">
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
