@@ -1,6 +1,8 @@
 #include "loadcommand.h"
 #include "dylibcommand.h"
 #include "genericcommand.h"
+#include "segmentcommand.h"
+#include "linkeditdatacommand.h"
 #include "symboltablecommand.h"
 #include "rpathcommand.h"
 #include "uuidcommand.h"
@@ -8,11 +10,28 @@
 #include "machoexception.h"
 #include "machoheader.h"
 
+#ifndef LC_DYLD_CHAINED_FIXUPS
+#define LC_DYLD_CHAINED_FIXUPS 0x80000034
+#endif
+#ifndef LC_DYLD_EXPORTS_TRIE
+#define LC_DYLD_EXPORTS_TRIE 0x80000033
+#endif
+
 
 LoadCommand* LoadCommand::getLoadCommand(unsigned int cmd, MachOHeader* header) {
 
     LoadCommand* loadCommand;
     switch(cmd) {
+		case LC_SEGMENT:
+		case LC_SEGMENT_64:
+			loadCommand = new SegmentCommand(header);
+			break;
+		case LC_DYLD_INFO:
+		case LC_DYLD_INFO_ONLY:
+		case LC_DYLD_CHAINED_FIXUPS:
+		case LC_DYLD_EXPORTS_TRIE:
+			loadCommand = new LinkeditDataCommand(header);
+			break;
 		case LC_LOAD_DYLINKER:
 			loadCommand = new DylinkerCommand(header);
 			break;

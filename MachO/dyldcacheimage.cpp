@@ -26,6 +26,8 @@
 #include <utility>
 #include <vector>
 
+#include <stddef.h>
+
 #ifndef LC_DYLD_EXPORTS_TRIE
 #define LC_DYLD_EXPORTS_TRIE 0x80000033u
 #endif
@@ -237,6 +239,11 @@ void DyldCacheImage::load(const std::string& path)
     intptr_t slide = _dyld_get_image_vmaddr_slide((uint32_t)index);
     if (header == 0)
         throw MachOException("Invalid image header for '" + path + "'.");
+
+    // Remember where dyld put the image: everything outside the synthesized
+    // buffer (the Objective-C metadata for instance) is read from there.
+    mappedBase = (const uint8_t*)header;
+    mappedSlide = slide;
 
     if (header->magic != MH_MAGIC_64)
         throw MachOException("Only 64 bit images can be read from the dyld shared cache ('" + path + "').");

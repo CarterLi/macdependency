@@ -41,6 +41,15 @@ public:
    */
   virtual bool isInMemory() const = 0;
 
+  /**
+   * When the bytes were taken from an image that dyld mapped into this
+   * process, the address of that image and the slide applied to it. Zero
+   * otherwise. The mapped image holds everything the synthesized file image
+   * does not, so parts of the image that are not in the file can still be read.
+   */
+  virtual const uint8_t* getMappedBase() const { return 0; }
+  virtual intptr_t getMappedSlide() const { return 0; }
+
 protected:
   explicit InternalFile(const std::string& filename);
 

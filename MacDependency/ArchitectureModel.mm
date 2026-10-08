@@ -238,7 +238,7 @@
 		SymbolTableCommand* command = dynamic_cast<SymbolTableCommand*> (*lcIter);
 		if (command != 0) {
 			for (SymbolTableCommand::SymbolTableEntriesConstIterator it = command->getSymbolTableEntryBegin(); it != command->getSymbolTableEntryEnd(); it++) {
-				SymbolTableEntryModel* symbolModel = [[SymbolTableEntryModel alloc] initWithEntry:*(it) demangleNamesPtr:[[document symbolTableController]demangleNamesPtr] document:document];
+				SymbolTableEntryModel* symbolModel = [[SymbolTableEntryModel alloc] initWithEntry:*(it) demangleNamesPtr:[[document symbolTableController]demangleNamesPtr] document:document architecture:architecture];
 				[symbolEntries addObject:symbolModel];
 			}
 		}

@@ -43,6 +43,17 @@ enum State {
 - (NSNumber*) compatibleVersion;
 - (NSString*) filename;
 - (NSString*) dependencyType;
+
+/**
+ * What the file itself is: an executable, a dynamic library, or an image that
+ * only lives in the dyld shared cache and so has no file of its own.
+ *
+ * The shared cache comes first of all, because that is the one thing about such
+ * an image that is worth knowing before anything the header says: there is
+ * nothing on disk to open, to reveal in the Finder or to hand to another tool.
+ */
+- (NSString*) fileKind;
+
 - (NSString*) version;
 - (NSDate*) lastModificationTime;
 - (NSArray*) architectures;

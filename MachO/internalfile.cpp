@@ -24,7 +24,8 @@ InternalFile* InternalFile::create(const std::string& filename) {
   // Throws a MachOException when the library cannot be mapped either.
   DyldCacheImage image;
   image.load(filename);
-  return new MemoryInternalFile(filename, image.getData(), image.getSize());
+  return new MemoryInternalFile(filename, image.getData(), image.getSize(),
+                                image.getMappedBase(), image.getMappedSlide());
 }
 
 void InternalFile::release() {

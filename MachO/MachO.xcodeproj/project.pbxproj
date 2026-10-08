@@ -58,6 +58,16 @@
 		A1C0DE0F1A2B3C4D5E0000B4 /* diskinternalfile.h in Headers */ = {isa = PBXBuildFile; fileRef = A1C0DE0F1A2B3C4D5E0000B3 /* diskinternalfile.h */; };
 		A1C0DE0F1A2B3C4D5E0000C2 /* memoryinternalfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A1C0DE0F1A2B3C4D5E0000C1 /* memoryinternalfile.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		A1C0DE0F1A2B3C4D5E0000C4 /* memoryinternalfile.h in Headers */ = {isa = PBXBuildFile; fileRef = A1C0DE0F1A2B3C4D5E0000C3 /* memoryinternalfile.h */; };
+		B2C0DE0F1A2B3C4D5E000101 /* segmentcommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2C0DE0F1A2B3C4D5E000001 /* segmentcommand.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B2C0DE0F1A2B3C4D5E000102 /* segmentcommand.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C0DE0F1A2B3C4D5E000002 /* segmentcommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B2C0DE0F1A2B3C4D5E000103 /* linkeditdatacommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2C0DE0F1A2B3C4D5E000003 /* linkeditdatacommand.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B2C0DE0F1A2B3C4D5E000104 /* linkeditdatacommand.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C0DE0F1A2B3C4D5E000004 /* linkeditdatacommand.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B2C0DE0F1A2B3C4D5E000105 /* machofixups.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2C0DE0F1A2B3C4D5E000005 /* machofixups.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B2C0DE0F1A2B3C4D5E000106 /* machofixups.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C0DE0F1A2B3C4D5E000006 /* machofixups.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B2C0DE0F1A2B3C4D5E000107 /* objctypedecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2C0DE0F1A2B3C4D5E000007 /* objctypedecoder.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B2C0DE0F1A2B3C4D5E000108 /* objctypedecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C0DE0F1A2B3C4D5E000008 /* objctypedecoder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B2C0DE0F1A2B3C4D5E000109 /* objcmetadata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2C0DE0F1A2B3C4D5E000009 /* objcmetadata.cpp */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		B2C0DE0F1A2B3C4D5E000110 /* objcmetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = B2C0DE0F1A2B3C4D5E000010 /* objcmetadata.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +129,16 @@
 		A1C0DE0F1A2B3C4D5E0000C1 /* memoryinternalfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = memoryinternalfile.cpp; sourceTree = "<group>"; wrapsLines = 0; };
 		A1C0DE0F1A2B3C4D5E0000C3 /* memoryinternalfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memoryinternalfile.h; sourceTree = "<group>"; wrapsLines = 0; };
 		ADCDF193276D87BF002476ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B2C0DE0F1A2B3C4D5E000001 /* segmentcommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = segmentcommand.cpp; sourceTree = "<group>"; wrapsLines = 0; };
+		B2C0DE0F1A2B3C4D5E000002 /* segmentcommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = segmentcommand.h; sourceTree = "<group>"; wrapsLines = 0; };
+		B2C0DE0F1A2B3C4D5E000003 /* linkeditdatacommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = linkeditdatacommand.cpp; sourceTree = "<group>"; wrapsLines = 0; };
+		B2C0DE0F1A2B3C4D5E000004 /* linkeditdatacommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = linkeditdatacommand.h; sourceTree = "<group>"; wrapsLines = 0; };
+		B2C0DE0F1A2B3C4D5E000005 /* machofixups.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = machofixups.cpp; sourceTree = "<group>"; wrapsLines = 0; };
+		B2C0DE0F1A2B3C4D5E000006 /* machofixups.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = machofixups.h; sourceTree = "<group>"; wrapsLines = 0; };
+		B2C0DE0F1A2B3C4D5E000007 /* objctypedecoder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = objctypedecoder.cpp; sourceTree = "<group>"; wrapsLines = 0; };
+		B2C0DE0F1A2B3C4D5E000008 /* objctypedecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = objctypedecoder.h; sourceTree = "<group>"; wrapsLines = 0; };
+		B2C0DE0F1A2B3C4D5E000009 /* objcmetadata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = objcmetadata.cpp; sourceTree = "<group>"; wrapsLines = 0; };
+		B2C0DE0F1A2B3C4D5E000010 /* objcmetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = objcmetadata.h; sourceTree = "<group>"; wrapsLines = 0; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -224,6 +244,16 @@
 				A1C0DE0F1A2B3C4D5E0000B3 /* diskinternalfile.h */,
 				A1C0DE0F1A2B3C4D5E0000C1 /* memoryinternalfile.cpp */,
 				A1C0DE0F1A2B3C4D5E0000C3 /* memoryinternalfile.h */,
+				B2C0DE0F1A2B3C4D5E000001 /* segmentcommand.cpp */,
+				B2C0DE0F1A2B3C4D5E000002 /* segmentcommand.h */,
+				B2C0DE0F1A2B3C4D5E000003 /* linkeditdatacommand.cpp */,
+				B2C0DE0F1A2B3C4D5E000004 /* linkeditdatacommand.h */,
+				B2C0DE0F1A2B3C4D5E000005 /* machofixups.cpp */,
+				B2C0DE0F1A2B3C4D5E000006 /* machofixups.h */,
+				B2C0DE0F1A2B3C4D5E000007 /* objctypedecoder.cpp */,
+				B2C0DE0F1A2B3C4D5E000008 /* objctypedecoder.h */,
+				B2C0DE0F1A2B3C4D5E000009 /* objcmetadata.cpp */,
+				B2C0DE0F1A2B3C4D5E000010 /* objcmetadata.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -288,6 +318,11 @@
 				A1C0DE0F1A2B3C4D5E0000A4 /* dyldcacheimage.h in Headers */,
 				A1C0DE0F1A2B3C4D5E0000B4 /* diskinternalfile.h in Headers */,
 				A1C0DE0F1A2B3C4D5E0000C4 /* memoryinternalfile.h in Headers */,
+				B2C0DE0F1A2B3C4D5E000102 /* segmentcommand.h in Headers */,
+				B2C0DE0F1A2B3C4D5E000104 /* linkeditdatacommand.h in Headers */,
+				B2C0DE0F1A2B3C4D5E000106 /* machofixups.h in Headers */,
+				B2C0DE0F1A2B3C4D5E000108 /* objctypedecoder.h in Headers */,
+				B2C0DE0F1A2B3C4D5E000110 /* objcmetadata.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +414,11 @@
 				A1C0DE0F1A2B3C4D5E0000A2 /* dyldcacheimage.cpp in Sources */,
 				A1C0DE0F1A2B3C4D5E0000B2 /* diskinternalfile.cpp in Sources */,
 				A1C0DE0F1A2B3C4D5E0000C2 /* memoryinternalfile.cpp in Sources */,
+				B2C0DE0F1A2B3C4D5E000101 /* segmentcommand.cpp in Sources */,
+				B2C0DE0F1A2B3C4D5E000103 /* linkeditdatacommand.cpp in Sources */,
+				B2C0DE0F1A2B3C4D5E000105 /* machofixups.cpp in Sources */,
+				B2C0DE0F1A2B3C4D5E000107 /* objctypedecoder.cpp in Sources */,
+				B2C0DE0F1A2B3C4D5E000109 /* objcmetadata.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,7 +458,7 @@
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				OTHER_LDFLAGS = "-Wl,-search_paths_first";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.googlecode.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = MachO;
@@ -441,7 +481,7 @@
 				GCC_PREFIX_HEADER = MachO_Prefix.h;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				OTHER_LDFLAGS = "-Wl,-search_paths_first";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.googlecode.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = MachO;

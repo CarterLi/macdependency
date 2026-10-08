@@ -14,4 +14,8 @@ unsigned int SymbolTableEntry32::getInternalType() const {
     return entry->n_type;
 }
 
+unsigned int SymbolTableEntry32::getLibraryOrdinal() const {
+    return GET_LIBRARY_ORDINAL(file.getUint16(entry->n_desc));
+}
+
 

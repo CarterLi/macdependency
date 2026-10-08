@@ -9,6 +9,7 @@ public:
     SymbolTableEntry32(MachOFile& file, struct nlist* entry, char* stringTable);
     virtual const char* getInternalName() const;
     virtual unsigned int getInternalType() const;
+    virtual unsigned int getLibraryOrdinal() const;
 private:
     struct nlist* entry;
 };

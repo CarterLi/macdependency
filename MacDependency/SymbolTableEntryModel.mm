@@ -14,12 +14,13 @@
 
 @implementation SymbolTableEntryModel
 
-- (id) initWithEntry:(const SymbolTableEntry*)anEntry demangleNamesPtr:(BOOL*)demangle document:(MyDocument*)aDocument {
+- (id) initWithEntry:(const SymbolTableEntry*)anEntry demangleNamesPtr:(BOOL*)demangle document:(MyDocument*)aDocument architecture:(MachOArchitecture*)anArchitecture {
 	self = [super init];
     if (self) {
 		entry = anEntry;
 		self->demangleNames = demangle;
 		document = aDocument;
+		architecture = anArchitecture;
 	}
 	return self;
 }
@@ -39,6 +40,26 @@
 
 - (NSNumber*) type {
 	return [NSNumber numberWithUnsignedInt:entry->getType()];
+}
+
+- (NSNumber*) kind {
+	return [NSNumber numberWithUnsignedInt:entry->getKind()];
+}
+
+- (NSString*) rawName {
+	return [NSString stringWithStdString:entry->getName(false)];
+}
+
+- (BOOL) isImported {
+	return entry->getType() == SymbolTableEntry::TypeImported;
+}
+
+- (unsigned int) libraryOrdinal {
+	return entry->getLibraryOrdinal();
+}
+
+- (MachOArchitecture*) architecture {
+	return architecture;
 }
 
 @end

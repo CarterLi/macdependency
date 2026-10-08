@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,6 +30,9 @@
 		8ED4567B10516D6200FAC99F /* MyDocumentWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED4567A10516D6200FAC99F /* MyDocumentWindow.m */; };
 		8EFDEF7A101007B300E4D54D /* ConversionStdString.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8EFDEF79101007B300E4D54D /* ConversionStdString.mm */; };
 		8EFDEF9310100F1700E4D54D /* VersionFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFDEF9210100F1700E4D54D /* VersionFormatter.m */; };
+		B3C0DE0F1A2B3C4D5E000102 /* ObjCClassDefinitionWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C0DE0F1A2B3C4D5E000002 /* ObjCClassDefinitionWindowController.m */; };
+		B3C0DE0F1A2B3C4D5E000103 /* SymbolTableEntryKindFormatter.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3C0DE0F1A2B3C4D5E000004 /* SymbolTableEntryKindFormatter.mm */; };
+		B3C0DE0F1A2B3C4D5E000105 /* SymbolTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B3C0DE0F1A2B3C4D5E000006 /* SymbolTableHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +109,12 @@
 		ADCDF194276D87BF002476ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		ADCDF195276D87BF002476ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		ADCDF196276D87BF002476ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B3C0DE0F1A2B3C4D5E000001 /* ObjCClassDefinitionWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCClassDefinitionWindowController.h; sourceTree = "<group>"; wrapsLines = 0; };
+		B3C0DE0F1A2B3C4D5E000002 /* ObjCClassDefinitionWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjCClassDefinitionWindowController.m; sourceTree = "<group>"; wrapsLines = 0; };
+		B3C0DE0F1A2B3C4D5E000003 /* SymbolTableEntryKindFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolTableEntryKindFormatter.h; sourceTree = "<group>"; wrapsLines = 0; };
+		B3C0DE0F1A2B3C4D5E000004 /* SymbolTableEntryKindFormatter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SymbolTableEntryKindFormatter.mm; sourceTree = "<group>"; wrapsLines = 0; };
+		B3C0DE0F1A2B3C4D5E000005 /* SymbolTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolTableHeaderView.h; sourceTree = "<group>"; wrapsLines = 0; };
+		B3C0DE0F1A2B3C4D5E000006 /* SymbolTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolTableHeaderView.m; sourceTree = "<group>"; wrapsLines = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +190,10 @@
 				8EFDEF9210100F1700E4D54D /* VersionFormatter.m */,
 				8E212D82101212FF0078924A /* SymbolTableEntryTypeFormatter.h */,
 				8E212D83101212FF0078924A /* SymbolTableEntryTypeFormatter.mm */,
+				B3C0DE0F1A2B3C4D5E000003 /* SymbolTableEntryKindFormatter.h */,
+				B3C0DE0F1A2B3C4D5E000004 /* SymbolTableEntryKindFormatter.mm */,
+				B3C0DE0F1A2B3C4D5E000005 /* SymbolTableHeaderView.h */,
+				B3C0DE0F1A2B3C4D5E000006 /* SymbolTableHeaderView.m */,
 				8EAEBA2110126AB100E1D5D2 /* SymbolTableController.h */,
 				8EAEBA2210126AB100E1D5D2 /* SymbolTableController.mm */,
 				8EB56270104EA241006A44CD /* TreeControllerExtension.h */,
@@ -190,6 +203,8 @@
 				8EB5640D104FE62F006A44CD /* AutoExpandOutlineView.m */,
 				8ED4567910516D6200FAC99F /* MyDocumentWindow.h */,
 				8ED4567A10516D6200FAC99F /* MyDocumentWindow.m */,
+				B3C0DE0F1A2B3C4D5E000001 /* ObjCClassDefinitionWindowController.h */,
+				B3C0DE0F1A2B3C4D5E000002 /* ObjCClassDefinitionWindowController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -325,10 +340,13 @@
 				8ED32F48100B68FF00EBF623 /* MachOModel.mm in Sources */,
 				8ED330CE100BD19800EBF623 /* SymbolTableEntryModel.mm in Sources */,
 				8E1314FA100F7BFC00367510 /* MyDocument.mm in Sources */,
+				B3C0DE0F1A2B3C4D5E000102 /* ObjCClassDefinitionWindowController.m in Sources */,
 				8E1314FC100F7C0C00367510 /* main.m in Sources */,
 				8EFDEF7A101007B300E4D54D /* ConversionStdString.mm in Sources */,
 				8EFDEF9310100F1700E4D54D /* VersionFormatter.m in Sources */,
 				8E212D84101212FF0078924A /* SymbolTableEntryTypeFormatter.mm in Sources */,
+				B3C0DE0F1A2B3C4D5E000103 /* SymbolTableEntryKindFormatter.mm in Sources */,
+				B3C0DE0F1A2B3C4D5E000105 /* SymbolTableHeaderView.m in Sources */,
 				8EAEBA2310126AB100E1D5D2 /* SymbolTableController.mm in Sources */,
 				8EC4F16010400F02001F9FB8 /* ArchitecturesController.mm in Sources */,
 				8EC4F16A1040126A001F9FB8 /* ArchitectureModel.mm in Sources */,
@@ -405,7 +423,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.googlecode.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = MacDependency;
 				SDKROOT = macosx;
@@ -422,7 +440,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				INFOPLIST_FILE = Info.plist;
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.googlecode.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = MacDependency;
 				SDKROOT = macosx;

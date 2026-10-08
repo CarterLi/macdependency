@@ -2,6 +2,7 @@
 #include "machofile.h"
 #include "machoheader.h"
 #include "loadcommand.h"
+#include "segmentcommand.h"
 #include "dylibcommand.h"
 #include "machoexception.h"
 #include "rpathcommand.h"
@@ -9,6 +10,9 @@
 #include "dylinkercommand.h"
 #include "macho.h"
 #include "dynamicloader.h"
+
+#include <string.h>
+#include <mach/mach.h>
 
 
 MachOArchitecture::MachOArchitecture(MachOFile& file, uint32_t magic, unsigned int size) :
@@ -111,6 +115,108 @@ unsigned int MachOArchitecture::getSize() const {
 
 const uint8_t* MachOArchitecture::getUuid() const {
 	return uuid;
+}
+
+std::vector<SegmentCommand*> MachOArchitecture::getSegments() const {
+    std::vector<SegmentCommand*> segments;
+    for (LoadCommandsConstIterator it = getLoadCommandsBegin(); it != getLoadCommandsEnd(); ++it) {
+        SegmentCommand* segment = dynamic_cast<SegmentCommand*>(*it);
+        if (segment != 0)
+            segments.push_back(segment);
+    }
+    return segments;
+}
+
+uint64_t MachOArchitecture::getImageBase() const {
+    for (LoadCommandsConstIterator it = getLoadCommandsBegin(); it != getLoadCommandsEnd(); ++it) {
+        SegmentCommand* segment = dynamic_cast<SegmentCommand*>(*it);
+        if (segment != 0 && segment->getName() == "__TEXT")
+            return segment->getVMAddress();
+    }
+    return 0;
+}
+
+uint64_t MachOArchitecture::getMappedSize() const {
+    uint64_t imageBase = getImageBase();
+    uint64_t end = imageBase;
+    std::vector<SegmentCommand*> segments = getSegments();
+    for (unsigned int n = 0; n < segments.size(); n++) {
+        uint64_t segmentEnd = segments[n]->getVMAddress() + segments[n]->getVMSize();
+        if (segmentEnd > end)
+            end = segmentEnd;
+    }
+    return end - imageBase;
+}
+
+long long MachOArchitecture::getFileOffset(uint64_t vmAddress) const {
+    std::vector<SegmentCommand*> segments = getSegments();
+    for (unsigned int n = 0; n < segments.size(); n++) {
+        long long offset = segments[n]->getFileOffsetForAddress(vmAddress);
+        if (offset >= 0)
+            return offset;
+    }
+    return -1;
+}
+
+bool MachOArchitecture::readAtFileOffset(uint64_t offset, void* buffer, size_t size) const {
+    unsigned long long absoluteOffset = (unsigned long long)header->getOffset() + offset;
+    if (absoluteOffset + size > file.getSize())
+        return false;
+
+    long long savedPosition = file.getPosition();
+    bool success = false;
+    try {
+        file.seek((long long)absoluteOffset);
+        file.readBytes((char*)buffer, size);
+        success = true;
+    } catch (MachOException&) {
+        success = false;
+    }
+    // The caller may be in the middle of walking the load commands.
+    file.seek(savedPosition);
+    return success;
+}
+
+bool MachOArchitecture::readFromProcess(uint64_t address, void* buffer, size_t size) const {
+    if (size == 0)
+        return true;
+    if (address == 0)
+        return false;
+
+    // The address is not necessarily backed by anything, so the copy is done
+    // by the kernel, which reports an error instead of taking the process down.
+    vm_size_t read = 0;
+    kern_return_t result = vm_read_overwrite(mach_task_self(), (vm_address_t)address, size,
+                                             (vm_address_t)buffer, &read);
+    return result == KERN_SUCCESS && read == size;
+}
+
+bool MachOArchitecture::readAtAddress(uint64_t vmAddress, void* buffer, size_t size) const {
+    const uint8_t* mappedBase = file.getMappedBase();
+    if (mappedBase != 0) {
+        // The image was mapped into this process by dyld. The synthesized file
+        // image only holds the header, the load commands and __LINKEDIT, but
+        // everything else -- the Objective-C metadata for instance -- can be
+        // read straight out of the mapping. dyld laid the segments out relative
+        // to the image base, so the file offsets do not apply here.
+        uint64_t imageBase = getImageBase();
+        if (vmAddress < imageBase)
+            return false;
+        uint64_t offset = vmAddress - imageBase;
+        uint64_t processAddress = (uint64_t)(uintptr_t)mappedBase + offset;
+        if (offset + size <= getMappedSize()) {
+            memcpy(buffer, mappedBase + offset, size);
+            return true;
+        }
+        // Beyond the image: class name strings of a shared cache image live in
+        // a pool that belongs to no single image, so this is still worth a try.
+        return readFromProcess(processAddress, buffer, size);
+    }
+
+    long long offset = getFileOffset(vmAddress);
+    if (offset < 0)
+        return false;
+    return readAtFileOffset((uint64_t)offset, buffer, size);
 }
 
 

@@ -36,8 +36,23 @@ public:
     const char* getData() const { return buffer.empty() ? 0 : &buffer[0]; }
     unsigned long long getSize() const { return (unsigned long long)buffer.size(); }
 
+    /**
+     * The image as dyld mapped it into this process: the address of its mach
+     * header and the slide that was applied to it. The buffer above only holds
+     * the header, the load commands and __LINKEDIT, so anything else the image
+     * contains -- the Objective-C metadata for instance -- has to be read from
+     * the mapped memory through these.
+     *
+     * The mapping stays valid for the lifetime of the process (the image is
+     * never dlclose()d), so the pointers can be used after this object is gone.
+     */
+    const uint8_t* getMappedBase() const { return mappedBase; }
+    intptr_t getMappedSlide() const { return mappedSlide; }
+
 private:
     std::vector<char> buffer;
+    const uint8_t* mappedBase = 0;
+    intptr_t mappedSlide = 0;
 };
 
 #endif // DYLD_CACHE_IMAGE_H

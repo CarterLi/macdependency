@@ -90,6 +90,22 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Edit" id="100701">
+                    <menu key="submenu" title="Edit" id="100702">
+                        <items>
+                            <menuItem title="Copy" keyEquivalent="c" id="100703">
+                                <connections>
+                                    <action selector="copy:" target="-1" id="100704"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Select All" keyEquivalent="a" id="100705">
+                                <connections>
+                                    <action selector="selectAll:" target="-1" id="100706"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="View" id="295">
                     <menu key="submenu" title="View" id="296">
                         <items>

@@ -35,6 +35,8 @@ std::string MachOFile::getTitle() const { return file->getTitle(); }
 unsigned long long MachOFile::getSize() const { return file->getSize(); }
 time_t MachOFile::getLastModificationTime() const { return file->getLastModificationTime(); }
 bool MachOFile::isInMemory() const { return file->isInMemory(); }
+const uint8_t* MachOFile::getMappedBase() const { return file->getMappedBase(); }
+intptr_t MachOFile::getMappedSlide() const { return file->getMappedSlide(); }
 
 uint32_t MachOFile::readUint32() {
   unsigned int temp;
@@ -52,6 +54,26 @@ uint32_t MachOFile::readUint32BE() {
   unsigned int temp;
   readBytes((char*)&temp, sizeof(temp));
   return getUint32BE(temp);
+}
+
+uint64_t MachOFile::readUint64() {
+  uint64_t temp;
+  readBytes((char*)&temp, sizeof(temp));
+  return getUint64(temp);
+}
+
+// getUint32 only handles 32 bit values, so a 64 bit value is split into its two
+// halves first: the byte order of each half is reversed individually and the
+// halves are then swapped.
+uint64_t MachOFile::getUint64(uint64_t data) const {
+  if (!reversedByteOrder)
+    return data;
+  const char* source = (const char*)&data;
+  uint64_t result;
+  char* destination = (char*)&result;
+  for (unsigned int n = 0; n < sizeof(data); n++)
+    destination[n] = source[sizeof(data) - 1 - n];
+  return result;
 }
 
 uint32_t MachOFile::getUint32BE(uint32_t data) {

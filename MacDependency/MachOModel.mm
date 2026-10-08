@@ -177,21 +177,23 @@
 	return file != nullptr && file->isInMemory();
 }
 
+/**
+ * The colour a row is drawn in.
+ *
+ * Only the two states that need acting upon have a colour of their own. An
+ * image that lives in the dyld shared cache used to get one as well, but the
+ * colour made those rows harder to read than the fact was worth: the File Kind
+ * column says "System Shared Cache" in words, in a colour that can be read.
+ */
 - (NSColor*) textColor {
-	NSColor* color;
 	switch(state) {
 		case StateWarning:
-			color = [NSColor systemYellowColor];
-			break;
+			return [NSColor systemYellowColor];
 		case StateError:
-			color = [NSColor systemRedColor];
-			break;
+			return [NSColor systemRedColor];
 		default:
-			// Libraries that live only in the dyld shared cache get their own
-			// color, so it is obvious that there is no file to inspect on disk.
-			color = [self isInMemory] ? [NSColor systemPurpleColor] : [NSColor labelColor];
+			return [NSColor labelColor];
 	}
-	return color;
 }
 
 - (NSString*) filename {
@@ -264,6 +266,43 @@
 			type = NSLocalizedString(@"UNDEFINED", @"Unknown");
 	}
 	return type;
+}
+
+- (NSString*) fileKind {
+	// Nothing was read for this row -- the library is missing, or has no
+	// architecture in common with its parent. Saying which of the three it is
+	// would be a guess, and the row already carries the colour and the log line
+	// that say what went wrong.
+	if (architecture == nullptr) {
+		return NSLocalizedString(@"FILE_KIND_UNKNOWN", @"Unknown");
+	}
+
+	// An image that was served out of the dyld shared cache is the one case
+	// where what the file is matters less than where it comes from: there is no
+	// file on disk to look at, whichever type the header records.
+	if ([self isInMemory]) {
+		return NSLocalizedString(@"FILE_KIND_SHARED_CACHE", nil);
+	}
+
+	switch (architecture->getHeader()->getFileType()) {
+		case MachOHeader::FileTypeExecutable:
+		case MachOHeader::FileTypePreload:
+			return NSLocalizedString(@"FILE_KIND_EXECUTABLE", nil);
+		// Everything that is loaded into another process is one of these: the
+		// shared libraries proper, the bundles that are loaded on demand, the
+		// stubs left for static linking and the dynamic linker itself.
+		case MachOHeader::FileTypeDylib:
+		case MachOHeader::FileTypeDylibStub:
+		case MachOHeader::FileTypeBundle:
+		case MachOHeader::FileTypeVmLib:
+		case MachOHeader::FileTypeDylinker:
+		case MachOHeader::FileTypeKextBundle:
+			return NSLocalizedString(@"FILE_KIND_DYNAMIC_LIBRARY", nil);
+		default:
+			// Object files, core files, dSYM companions: never a dependency of
+			// anything, but the header can say so and it is not one of the three.
+			return NSLocalizedString(@"FILE_KIND_UNKNOWN", @"Unknown");
+	}
 }
 
 - (NSArray*) architectures {

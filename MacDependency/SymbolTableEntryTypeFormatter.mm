@@ -10,28 +10,26 @@
 #include "MachO/symboltableentry.h"
 
 @implementation SymbolTableEntryTypeFormatter
+
++ (NSString*) labelForType:(unsigned int)type {
+	switch (type) {
+		case SymbolTableEntry::TypeExported:
+			return NSLocalizedString(@"SYMBOL_TYPE_EXPORT", @"Export");
+		case SymbolTableEntry::TypeImported:
+			return NSLocalizedString(@"SYMBOL_TYPE_IMPORT", @"Import");
+	}
+	return NSLocalizedString(@"UNKNOWN", @"Unknown");
+}
+
 // conversion to string
 - (NSString*) stringForObjectValue:(id)obj {
 	// must be a NSNumber
 	if (![obj isKindOfClass:[NSNumber class]]) {
 		return nil;
 	}
-	
-	// NSNumber contains the version as unsigned int
-	unsigned int typeNumber = [obj unsignedIntValue];
-	NSString* type;
-	switch(typeNumber) {
-		case SymbolTableEntry::TypeExported:
-			type = NSLocalizedString(@"SYMBOL_TYPE_EXPORT", @"Export");
-			break;
-		case SymbolTableEntry::TypeImported:
-			type = NSLocalizedString(@"SYMBOL_TYPE_IMPORT", @"Import");
-			break;
-		default:
-			type = NSLocalizedString(@"UNKNOWN", @"Unknown");
-			
-	}
-	return type;
+
+	// NSNumber contains the type as unsigned int
+	return [SymbolTableEntryTypeFormatter labelForType:[obj unsignedIntValue]];
 }
 
 

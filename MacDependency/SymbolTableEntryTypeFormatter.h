@@ -13,4 +13,10 @@
 
 }
 
+/**
+ * What a type of symbol is called. The column that shows the type and the menu
+ * that filters by it ask the same place, so the two cannot drift apart.
+ */
++ (NSString*) labelForType:(unsigned int)type;
+
 @end

@@ -2,8 +2,9 @@
 
 #include <cstring>
 
-MemoryInternalFile::MemoryInternalFile(const std::string& filename, const char* data, size_t size) :
-InternalFile(filename), data(data, data + size), position(0)
+MemoryInternalFile::MemoryInternalFile(const std::string& filename, const char* data, size_t size,
+                                       const uint8_t* mappedBase, intptr_t mappedSlide) :
+InternalFile(filename), data(data, data + size), position(0), mappedBase(mappedBase), mappedSlide(mappedSlide)
 {
 }
 
