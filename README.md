@@ -6,7 +6,7 @@ MacDependency shows all dependent libraries and frameworks of a given executable
 
 More information available in the [Wiki](../../wiki).
 
-![Screenshot](images/macdependency.png)
+![Screenshot](images/macdependency.jpg)
 
 ## This fork
 
