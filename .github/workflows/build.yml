@@ -3,11 +3,39 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: macos-latest
+    strategy:
+      # One architecture failing is worth knowing about on its own, so the
+      # other one is built anyway.
+      fail-fast: false
+      matrix:
+        # Both architectures the app runs on: the one the runner itself uses,
+        # and the one it can build for but not run.
+        arch: [arm64, x86_64]
     steps:
-      - uses: actions/checkout@v2
-      # https://github.com/mxcl/xcodebuild
-      - uses: mxcl/xcodebuild@v1
+      - uses: actions/checkout@v4
+
+      # `xcodebuild` is run here rather than through an action, so that the
+      # product ends up in a directory this file names, which is what the
+      # upload step needs. `ARCHS` is what picks the architecture: the runner
+      # builds the other one as a cross build.
+      - name: Build for ${{ matrix.arch }}
+        working-directory: MacDependency
+        run: |
+          xcodebuild -project MacDependency.xcodeproj \
+                     -scheme MacDependency \
+                     -configuration Release \
+                     -derivedDataPath "$RUNNER_TEMP/DerivedData" \
+                     ONLY_ACTIVE_ARCH=NO \
+                     ARCHS=${{ matrix.arch }} \
+                     build
+
+      # The app, and the symbols that go with it: a crash from a build that
+      # was downloaded is only readable with the .dSYM beside it.
+      - name: Upload the app for ${{ matrix.arch }}
+        uses: actions/upload-artifact@v4
         with:
-          platform: macOS
-          working-directory: MacDependency
-          action: build # default = `test`
+          name: MacDependency-${{ matrix.arch }}
+          path: |
+            ${{ runner.temp }}/DerivedData/Build/Products/Release/MacDependency.app
+            ${{ runner.temp }}/DerivedData/Build/Products/Release/MacDependency.app.dSYM
+          if-no-files-found: error
