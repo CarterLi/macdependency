@@ -30,6 +30,12 @@ public:
   virtual const uint8_t* getMappedBase() const { return mappedBase; }
   virtual intptr_t getMappedSlide() const { return mappedSlide; }
 
+  /**
+   * The shared cache the image was copied out of, since the image has no file
+   * of its own. Empty when dyld will not name the cache.
+   */
+  virtual std::string getPath() const;
+
 private:
   std::vector<char> data;
   long long int position;

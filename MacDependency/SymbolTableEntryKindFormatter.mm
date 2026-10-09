@@ -30,7 +30,7 @@
 		case SymbolTableEntry::KindObjCOther:
 			return NSLocalizedString(@"SYMBOL_KIND_OBJC_OTHER", @"ObjC");
 	}
-	return NSLocalizedString(@"UNKNOWN", @"Unknown");
+	return NSLocalizedString(@"SYMBOL_KIND_UNKNOWN", @"Unknown");
 }
 
 // conversion to string

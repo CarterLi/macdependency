@@ -32,6 +32,8 @@ std::string MachOFile::getDirectory() const {
 }
 
 std::string MachOFile::getTitle() const { return file->getTitle(); }
+
+std::string MachOFile::getPath() const { return file->getPath(); }
 unsigned long long MachOFile::getSize() const { return file->getSize(); }
 time_t MachOFile::getLastModificationTime() const { return file->getLastModificationTime(); }
 bool MachOFile::isInMemory() const { return file->isInMemory(); }

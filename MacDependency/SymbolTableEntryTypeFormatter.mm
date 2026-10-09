@@ -18,7 +18,7 @@
 		case SymbolTableEntry::TypeImported:
 			return NSLocalizedString(@"SYMBOL_TYPE_IMPORT", @"Import");
 	}
-	return NSLocalizedString(@"UNKNOWN", @"Unknown");
+	return NSLocalizedString(@"SYMBOL_TYPE_UNKNOWN", @"Unknown");
 }
 
 // conversion to string

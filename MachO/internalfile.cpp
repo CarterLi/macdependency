@@ -58,3 +58,8 @@ std::string InternalFile::getName() const {
 std::string InternalFile::getTitle() const {
   return filename;
 }
+
+/* the file on disk the bytes were read from */
+std::string InternalFile::getPath() const {
+  return getName();
+}

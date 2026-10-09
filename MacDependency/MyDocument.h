@@ -67,6 +67,16 @@ class ObjCMetadata;
 - (IBAction)showObjCClassDefinition:(id)sender;
 
 /**
+ * The library an imported symbol is provided by, as a row of the dependency
+ * tree, or nil when it cannot be told.
+ *
+ * This is what a double click on an imported symbol follows, and what the From
+ * column of the symbol table names: one answer, so that what the column says
+ * and where the click goes cannot disagree.
+ */
+- (MachOModel*)providerOfImportedSymbol:(SymbolTableEntryModel*)model;
+
+/**
  * Puts the selected row of the symbol table on the pasteboard, written the way
  * the table displays it: "Export _AaaBbbCcc". This is what the Edit menu's Copy
  * item sends, and it does something only while the symbol table has the focus

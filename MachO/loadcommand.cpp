@@ -48,6 +48,14 @@ LoadCommand* LoadCommand::getLoadCommand(unsigned int cmd, MachOHeader* header) 
         case LC_LOAD_DYLIB:
             loadCommand = new DylibCommand(header, DylibCommand::DependencyNormal);
             break;
+        // An upward dependency is a library that is not loaded into the process
+        // by this image but by the one that loads it. It is a library of the
+        // load commands like any other, and it counts towards the numbers the
+        // two level namespace gives the libraries, so leaving it out of them
+        // would put every ordinal after it on the wrong library.
+        case LC_LOAD_UPWARD_DYLIB:
+            loadCommand = new DylibCommand(header, DylibCommand::DependencyUpward);
+            break;
         case LC_ID_DYLIB:
             loadCommand = new DylibCommand(header, DylibCommand::DependencyId);
             break;

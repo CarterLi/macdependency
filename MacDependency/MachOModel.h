@@ -45,6 +45,17 @@ enum State {
 - (NSString*) dependencyType;
 
 /**
+ * The file the Reveal in Finder button should show for this entry.
+ *
+ * Usually the file the image was read from. An image that only lives in the
+ * dyld shared cache has no file of its own, so this is the shared cache it was
+ * copied out of: that names a file that exists, while the install name -- which
+ * is what the File Name field shows -- names a path that need not exist at all.
+ * Empty when neither can be named.
+ */
+- (NSString*) revealPath;
+
+/**
  * What the file itself is: an executable, a dynamic library, or an image that
  * only lives in the dyld shared cache and so has no file of its own.
  *

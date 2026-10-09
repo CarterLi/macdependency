@@ -48,6 +48,17 @@
  */
 - (unsigned int) libraryOrdinal;
 
+/**
+ * The library an imported symbol comes from, named the way the load commands
+ * name it but cut down to the library's name: "libSystem" for
+ * "/usr/lib/libSystem.B.dylib", "Foundation" for a framework's install name.
+ *
+ * Only an import has one -- an image does not get its own exports from a
+ * library -- and so has only the import that the two level namespace binds to
+ * one library. An import that names none is left empty rather than guessed at.
+ */
+- (NSString*) from;
+
 /** The image this symbol was read from. */
 - (MachOArchitecture*) architecture;
 @end

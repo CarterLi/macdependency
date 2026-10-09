@@ -45,7 +45,6 @@ static NSString* const kObjCMetaclassSymbolPrefix = @"_OBJC_METACLASS_$_";
 - (NSString*) rowText:(NSInteger)row inTableView:(NSTableView*)tableView;
 - (void) revealImportSymbol:(SymbolTableEntryModel*)model;
 - (NSArray*) librariesOfSelectedImage;
-- (MachOModel*) providerOfImportedSymbol:(SymbolTableEntryModel*)model;
 - (MachOModel*) dependencyProvidingSymbolInProcess:(NSString*)symbol;
 - (MachOModel*) dependencyWithFileNamed:(NSString*)path;
 - (void) selectExportedSymbolNamed:(NSString*)name;
@@ -292,7 +291,16 @@ static NSString* const kObjCMetaclassSymbolPrefix = @"_OBJC_METACLASS_$_";
 }
 
 - (IBAction)clickRevealInFinder:(id)sender {
-	NSString* filename = [textFieldFilename stringValue];
+	// The selected entry, and not the name the File Name field shows: for an
+	// image served out of the dyld shared cache that name is the install name
+	// of a library that is not a file, and the Finder would have nothing to
+	// show. The entry knows the file the bytes really come from.
+	MachOModel* model = [[dependenciesController selectedObjects] firstObject];
+	NSString* filename = [model revealPath];
+	if ([filename length] == 0)
+		filename = [textFieldFilename stringValue];
+	if ([filename length] == 0)
+		return;
 
 	[[NSWorkspace sharedWorkspace] selectFile: filename inFileViewerRootedAtPath: @""];
 

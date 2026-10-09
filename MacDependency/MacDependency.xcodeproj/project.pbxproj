@@ -115,6 +115,11 @@
 		B3C0DE0F1A2B3C4D5E000004 /* SymbolTableEntryKindFormatter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SymbolTableEntryKindFormatter.mm; sourceTree = "<group>"; wrapsLines = 0; };
 		B3C0DE0F1A2B3C4D5E000005 /* SymbolTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SymbolTableHeaderView.h; sourceTree = "<group>"; wrapsLines = 0; };
 		B3C0DE0F1A2B3C4D5E000006 /* SymbolTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SymbolTableHeaderView.m; sourceTree = "<group>"; wrapsLines = 0; };
+		B3C0DE0F1A2B3C4D5E000201 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/Credits.rtf"; sourceTree = "<group>"; };
+		B3C0DE0F1A2B3C4D5E000202 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		B3C0DE0F1A2B3C4D5E000203 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		B3C0DE0F1A2B3C4D5E000204 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		B3C0DE0F1A2B3C4D5E000205 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MyDocument.strings"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +295,7 @@
 				English,
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* MacDependency */;
 			projectDirPath = "";
@@ -372,6 +378,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				ADCDF194276D87BF002476ED /* en */,
+				B3C0DE0F1A2B3C4D5E000201 /* zh-Hans */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -380,6 +387,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				ADCDF195276D87BF002476ED /* en */,
+				B3C0DE0F1A2B3C4D5E000202 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -388,6 +396,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				ADCDF191276D87BD002476ED /* Base */,
+				B3C0DE0F1A2B3C4D5E000204 /* zh-Hans */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -396,6 +405,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				ADCDF192276D87BD002476ED /* Base */,
+				B3C0DE0F1A2B3C4D5E000205 /* zh-Hans */,
 			);
 			name = MyDocument.xib;
 			sourceTree = "<group>";
@@ -404,6 +414,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				ADCDF196276D87BF002476ED /* en */,
+				B3C0DE0F1A2B3C4D5E000203 /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

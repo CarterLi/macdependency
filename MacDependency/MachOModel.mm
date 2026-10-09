@@ -203,6 +203,15 @@
 	return [NSString stringWithStdString:filename];
 }
 
+// The file that stands for this image on disk. For an image out of the dyld
+// shared cache that is the cache file, because the image itself is not one.
+- (NSString*) revealPath {
+	std::string path;
+	if (file)
+		path = file->getPath();
+	return [NSString stringWithStdString:path];
+}
+
 - (NSString*) version {
 	if (file) {
 		return [NSString stringWithStdString:file->getVersion()];
@@ -261,6 +270,9 @@
 			break;
 		case DylibCommand::DependencyNormal:
 			type = NSLocalizedString(@"DEPENDENCY_TYPE_NORMAL", nil);
+			break;
+		case DylibCommand::DependencyUpward:
+			type = NSLocalizedString(@"DEPENDENCY_TYPE_UPWARD", nil);
 			break;
 		default:
 			type = NSLocalizedString(@"UNDEFINED", @"Unknown");

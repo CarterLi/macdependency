@@ -10,6 +10,7 @@ public:
         DependencyWeak,     // dependency is allowed to be missing
         DependencyDelayed,  // dependency is loaded when it is needed (not at start)
         DependencyNormal,
+        DependencyUpward,   // dependency is looked up among the images that load this one
         DependencyId
     };
 

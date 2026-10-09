@@ -214,6 +214,10 @@ std::string MachO::getFileName() const {
 	std::string filename = file->getName();
 	return filename;
 }
+
+std::string MachO::getPath() const {
+	return file != 0 ? file->getPath() : std::string();
+}
     
 MachO::MachOArchitecturesIterator MachO::getArchitecturesBegin() { return architectures.begin(); }
 

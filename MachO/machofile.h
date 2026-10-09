@@ -26,6 +26,13 @@ public:
   std::string getDirectory() const;
   std::string getName() const;
   std::string getTitle() const;
+
+  /**
+   * The file the bytes come from, as a path to open or to show in the Finder.
+   * For an image served out of the dyld shared cache that is the cache itself,
+   * the image having no file of its own.
+   */
+  std::string getPath() const;
   unsigned long long getSize() const;
   void seek(long long int offset) { position = offset; }
   long long int getPosition() const {  return position; }

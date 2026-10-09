@@ -50,6 +50,16 @@ public:
   virtual const uint8_t* getMappedBase() const { return 0; }
   virtual intptr_t getMappedSlide() const { return 0; }
 
+  /**
+   * The file the bytes come from, as a path to open or to show in the Finder.
+   *
+   * A file on disk names itself. An image that only lives in the dyld shared
+   * cache has no file of its own, so it names the cache the bytes were copied
+   * out of: that is the only file there is to point at, the install name being
+   * a path that need not exist on disk at all.
+   */
+  virtual std::string getPath() const;
+
 protected:
   explicit InternalFile(const std::string& filename);
 
